@@ -15,3 +15,13 @@
   font-family: anzo3;
   src: url(./assets/file3.woff2);
 }
+
+#hero-i {
+  position: relative;
+  perspective: 1000px;
+}
+
+#tiltDiv {
+  width: fit-content;
+  transform: rotateY(50deg) rotateX(50deg);
+}
