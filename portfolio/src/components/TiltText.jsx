@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 const TiltText = forwardRef(function TiltText(props, ref) {
   return (
     <div className=" mt-32" ref={ref} id="tiltDiv">
-      <h1 className=" text-[5.5vw] text-white uppercase font-[anzo3] leading-[4vw]">
+      <h1 className=" text-[5.5vw] text-white uppercase font-[anzo1] leading-[4vw]">
         I&apos;m
         <span className=" bg-gradient-to-bl from-pink-500 to-orange-600 ml-2  rounded-[10px] text-transparent bg-clip-text  shadow-black">
           FRONTEND<span className=" text-white">™</span>

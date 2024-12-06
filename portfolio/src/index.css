@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: anzo1;
-  src: url(./assets/file.woff2);
+  src: url(./assets/file1.woff2);
 }
 
 @font-face {
@@ -14,6 +14,21 @@
 @font-face {
   font-family: anzo3;
   src: url(./assets/file3.woff2);
+}
+
+@font-face {
+  font-family: anzo4;
+  src: url(./assets/file4.woff2);
+}
+
+@font-face {
+  font-family: anzo5;
+  src: url(./assets/file5.woff2);
+}
+
+@font-face {
+  font-family: anzo6;
+  src: url(./assets/file6.woff2);
 }
 
 #hero-i {
