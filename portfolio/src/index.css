@@ -36,7 +36,16 @@
   perspective: 1000px;
 }
 
+#section-2 {
+  position: relative;
+  perspective: 3000px;
+}
+
 #tiltDiv {
   width: fit-content;
   transform: rotateY(50deg) rotateX(50deg);
+}
+
+#rotateText {
+  transform-origin: 100% 70%;
 }
