@@ -139,6 +139,15 @@ export const projects = [
     demoLink: "https://tlredits.com/",
   },
   {
+    title: "Visual Algo",
+    description:
+      "Developed a web app that visualizes sorting algorithms like Bubble Sort and Quick Sort, helping students understand complex algorithms visually. Built with html, css, and vanilla js.",
+    imgSrc:
+      "https://ik.imagekit.io/umdiwr6ma/portfolio/Screenshot%202024-12-27%20at%201.48.40%E2%80%AFAM.png?updatedAt=1735244329817",
+    githubLink: "https://github.com/kapildadhich075/visual-algo",
+    demoLink: "https://react-http-98d20.web.app/",
+  },
+  {
     title: "Studflow",
     description:
       "Developed a productivity platform with features like drag-and-drop task management and Stripe integration, currently serving 30+ active users. Integrated Unsplash API for personalized content.",
