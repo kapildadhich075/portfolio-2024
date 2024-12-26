@@ -19,6 +19,7 @@ function App() {
       <Education />
       <Skills />
       <Projects />
+
       <LaptopVideo />
     </>
   );

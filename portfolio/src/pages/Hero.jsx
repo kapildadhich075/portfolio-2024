@@ -39,14 +39,14 @@ function Hero() {
   return (
     <div
       onMouseMove={(e) => mouseMoving(e)}
-      className=" h-screen relative  px-7 py-7"
+      className="h-screen relative px-4 py-4 sm:px-7 sm:py-7"
       id="hero"
     >
       <div
         id="hero-in"
-        className="relative p-28 h-full w-full bg-[url(./assets/hero.jpg)] bg-cover rounded-[50px] shadow-lg shadow-gray-700 "
+        className="relative p-10 sm:p-28 h-full w-full bg-[url(./assets/hero.jpg)] bg-cover rounded-2xl sm:rounded-[50px] shadow-lg shadow-gray-700"
       >
-        <h1 className=" text-[5rem] font-serif text-white">KD</h1>
+        <h1 className="text-4xl sm:text-[5rem] font-serif text-white">KD</h1>
         <TiltText ref={tiltRef} />
         <HeroBottom />
       </div>

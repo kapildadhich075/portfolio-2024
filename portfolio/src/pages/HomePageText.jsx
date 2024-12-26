@@ -25,6 +25,7 @@ function HomePageText() {
       <h3 className=" text-gray-500 text-xl font-[anzo3]">
         © KD075 2024 | Designed and Developed
       </h3>
+
       {/* <div id="rotateText" className="mt-40">
         <h1 className=" text-[42vw] font-[anzo4] uppercase leading-[33vw] ">
           IMPACTFUL
