@@ -1,26 +1,4 @@
-const DataofEducation = [
-  {
-    id: 1,
-    school: "Lachoo Memorial College of Science & Tech",
-    date: "Sep 2021 - May 2024",
-    grade: "4 GPA",
-    coursework:
-      "Data Structures, Algorithms, Software Engineering, Web Development",
-    imgSrc:
-      "https://ik.imagekit.io/umdiwr6ma/portfolio/lmc3.png?updatedAt=1734960699283",
-    description: "Bachelor of Computer Applications",
-  },
-  {
-    id: 2,
-    school: "Central Academy School",
-    date: "April 2014 - June 2020",
-    grade: "80.0%",
-    coursework: "Accountancy, Economics, Business Studies, Java, Python, SQL",
-    imgSrc:
-      "https://ik.imagekit.io/umdiwr6ma/portfolio/centralacademyjodhpur_logo.jpeg?updatedAt=1734966867030",
-    description: "High and Senior Secondary School",
-  },
-];
+import { DataofEducation } from "../constants/data";
 
 function Education() {
   return (
@@ -39,7 +17,7 @@ function Education() {
             {DataofEducation.map((education) => {
               return (
                 <li role="school" className="relative pl-12" key={education.id}>
-                  <div className="flex flex-col flex-1 gap-2">
+                  <div className="flex flex-col flex-1 gap-2 text-justify">
                     <a
                       href="#"
                       className="absolute z-10 inline-flex items-center justify-center w-14 h-14 text-white rounded-full -left-7 ring-2 ring-white"

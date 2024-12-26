@@ -1,6 +1,16 @@
 import "remixicon/fonts/remixicon.css";
+import Modal from "../components/Modal";
+import Contact from "../pages/Contact";
+
+import { useState } from "react";
 
 function LaptopVideo() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <div className="bg-white relative flex flex-col md:flex-row items-center justify-center gap-10 p-4 sm:p-8 md:p-12 lg:p-16 mb-20">
       <div>
@@ -24,12 +34,24 @@ function LaptopVideo() {
         <div className="flex flex-row items-center mt-4 gap-4">
           <a
             target="_blank"
-            className="bg-black px-4 py-2 text-white rounded-lg flex items-center"
+            className="bg-black px-4 py-2 text-white rounded-lg flex items-center cursor-pointer"
             href="https://calendly.com/kapildadhich075/30min"
           >
             <i className="ri-calendar-view text-xl mr-2"></i> Book a Meeting
           </a>
+
+          <a
+            target="_blank"
+            className="bg-black px-4 py-2 text-white rounded-lg flex items-center cursor-pointer"
+            onClick={handleModal}
+          >
+            Send Message <i className="ri-mail-send-fill text-xl ml-2"></i>
+          </a>
         </div>
+
+        <Modal isOpen={isModalOpen} onClose={handleModal}>
+          <Contact />
+        </Modal>
 
         <div className="flex gap-2 outline-dashed rounded-md p-2">
           <a
