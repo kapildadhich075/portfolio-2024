@@ -31,6 +31,7 @@ function Projects() {
                 <div className="mt-4">
                   {project.githubLink && (
                     <a
+                      target="_blank"
                       href={project.githubLink}
                       className="text-blue-600 hover:underline
                       bg-blue-100 px-2 py-1 rounded-md"
@@ -40,6 +41,7 @@ function Projects() {
                   )}
                   {project.demoLink && (
                     <a
+                      target="_blank"
                       href={project.demoLink}
                       className="text-blue-600 hover:underline
                       bg-blue-100 px-2 py-1 rounded-md ml-2"

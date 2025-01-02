@@ -1,6 +1,6 @@
 function About() {
   return (
-    <div className=" max-w-5xl mx-auto p-5 h-screen">
+    <div className=" max-w-5xl mx-auto p-5 ">
       <h1 className=" font-[anzo4] text-9xl">About</h1>
       <p className="font-[anzo3] text-justify py-5 text-lg">
         My journey began in 8th grade, crafting web pages while playing
