@@ -81,7 +81,7 @@ export const DataofExperience = [
     place: "Remote",
     imgSrc: "",
     description:
-      "Developed advanced trip planning features that boosted user satisfaction by 25% and integrated seamless payment solutions like PhonePe, improving transaction success rates by 10%. Built a React Native food delivery app with Expo and Google APIs, enabling real-time rider tracking and enhancing delivery accuracy by 20%. Delivered scalable frontend solutions for job boards and delivery platforms using Next.js, PostgreSQL, Chakra UI, and React Native. Spearheaded the development of Trekykart's website and admin panel with React.js, Next.js, and Node.js, reducing page load times by 20% and increasing user engagement by 15%.",
+      "Developed scalable web apps using Next.js, TypeScript, and Tailwind CSS, delivering responsive solutions for clients like Fizzwizz Media. Integrated advanced AI with Eden AI for NLP and Twilio for automated voice responses. Built a CMS-driven platform using React, PostgreSQL, and Contentful CMS. Optimized performance with ImageKit, ensuring faster load times and superior user experiences.",
   },
   {
     designation: "Software Developer",
@@ -137,6 +137,15 @@ export const projects = [
       "https://ik.imagekit.io/umdiwr6ma/portfolio/tlredits.png?updatedAt=1735223268079",
     githubLink: "",
     demoLink: "https://tlredits.com/",
+  },
+  {
+    title: "Visual Algo",
+    description:
+      "Developed a web app that visualizes sorting algorithms like Bubble Sort and Quick Sort, helping students understand complex algorithms visually. Built with html, css, and vanilla js.",
+    imgSrc:
+      "https://ik.imagekit.io/umdiwr6ma/portfolio/Screenshot%202024-12-27%20at%201.48.40%E2%80%AFAM.png?updatedAt=1735244329817",
+    githubLink: "https://github.com/kapildadhich075/visual-algo",
+    demoLink: "https://react-http-98d20.web.app/",
   },
   {
     title: "Studflow",

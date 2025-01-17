@@ -21,7 +21,7 @@ function HomePageText() {
   });
 
   return (
-    <div id="section-2" className=" bg-white text-center p-20 text-black">
+    <div id="section-2" className=" bg-white text-center p-10 text-black">
       <h3 className=" text-gray-500 text-xl font-[anzo3]">
         © KD075 2024 | Designed and Developed
       </h3>
