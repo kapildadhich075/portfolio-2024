@@ -54,3 +54,19 @@ export const getEducationDetails = async () => {
     console.error(error);
   }
 };
+
+export const getProjectsDetails = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "projects",
+    });
+
+    const projectsData = response.items.map((item) => {
+      return item.fields;
+    });
+
+    return projectsData;
+  } catch (error) {
+    console.error(error);
+  }
+};

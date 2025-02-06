@@ -15,8 +15,6 @@ function Education() {
     }
   }, [educationData, education]);
 
-  console.log(educationData, "educationData");
-
   return (
     <>
       {/*<!-- Component: Education --> */}
@@ -30,9 +28,9 @@ function Education() {
             role="list"
             className="relative flex flex-col gap-12 py-12 pl-6 before:absolute before:top-0 before:left-6 before:h-full before:-translate-x-1/2 before:border before:border-dashed before:border-slate-200 after:absolute after:top-6 after:left-6 after:bottom-6 after:-translate-x-1/2 after:border after:border-slate-200"
           >
-            {educationData.map((education) => {
+            {educationData.map((education, index) => {
               return (
-                <li role="school" className="relative pl-12" key={education.id}>
+                <li role="school" className="relative pl-12" key={index}>
                   <div className="flex flex-col flex-1 gap-2 text-justify">
                     <a
                       href="#"

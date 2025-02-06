@@ -1,6 +1,20 @@
-import { projects } from "../constants/data";
+import { useState, useEffect } from "react";
+
+import { getProjectsDetails } from "../contentful/contentful-data";
 
 function Projects() {
+  const [projectsData, setProjectsData] = useState([]);
+
+  const projects = getProjectsDetails();
+
+  useEffect(() => {
+    if (projectsData && projectsData.length === 0) {
+      projects.then((data) => {
+        setProjectsData(data);
+      });
+    }
+  }, [projectsData, projects]);
+
   return (
     <>
       <div className=" mx-auto p-5 justify-center max-w-5xl">
@@ -10,7 +24,7 @@ function Projects() {
           grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-5
         py-5"
         >
-          {projects.map((project, index) => (
+          {projectsData.map((project, index) => (
             <div
               key={index}
               className="border border-gray-300 rounded-lg shadow-md overflow-hidden
