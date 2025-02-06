@@ -70,3 +70,19 @@ export const getProjectsDetails = async () => {
     console.error(error);
   }
 };
+
+export const getSkillsDetails = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "skills",
+    });
+
+    const skillsData = response.items.map((item) => {
+      return item.fields;
+    });
+
+    return skillsData;
+  } catch (error) {
+    console.error(error);
+  }
+};
