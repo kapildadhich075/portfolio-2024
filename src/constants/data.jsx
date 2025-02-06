@@ -71,6 +71,33 @@ export const Skill = [
   {
     name: "Postman",
   },
+  {
+    name: "GSAP",
+  },
+  {
+    name: "Figma",
+  },
+  {
+    name: "Three.js",
+  },
+];
+
+export const aboutDetails =
+  "My journey began in 8th grade, crafting web pages while playing        state-level cricket as a fast bowler. Competing in hackathons as the  youngest participant sparked my passion for tech. Pursuing a BCA degree,        I balanced studies with internships across diverse roles, becoming a    generalist skilled in problem-solving and adaptability. Now, I’m eager        to focus my experience on building impactful software solutions.";
+
+export const aboutVideos = [
+  {
+    videoSrc:
+      "https://ik.imagekit.io/umdiwr6ma/portfolio/IMG_3605.MOV/ik-video.mp4?updatedAt=1735230935453",
+  },
+  {
+    videoSrc:
+      "https://ik.imagekit.io/umdiwr6ma/portfolio/video.mp4?updatedAt=1735241051306",
+  },
+  {
+    videoSrc:
+      "https://ik.imagekit.io/umdiwr6ma/portfolio/cricket.MP4?updatedAt=1735242503869",
+  },
 ];
 
 export const DataofExperience = [
