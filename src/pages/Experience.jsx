@@ -1,6 +1,19 @@
-import { DataofExperience } from "../constants/data";
+import { useState, useEffect } from "react";
+
+import { getExperienceDetails } from "../contentful/contentful-data";
 
 function Experience() {
+  const [experienceData, setExperienceData] = useState([]);
+  const experience = getExperienceDetails();
+
+  useEffect(() => {
+    if (experienceData && experienceData.length === 0) {
+      experience.then((data) => {
+        setExperienceData(data);
+      });
+    }
+  }, [experienceData, experience]);
+
   function getRandomColor() {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -9,6 +22,7 @@ function Experience() {
     }
     return color;
   }
+
   return (
     <>
       {/*<!-- Component: Experience --> */}
@@ -22,7 +36,7 @@ function Experience() {
             role="list"
             className="relative flex flex-col gap-12 py-12 pl-6 before:absolute before:top-0 before:left-6 before:h-full before:-translate-x-1/2 before:border before:border-dashed before:border-slate-200 after:absolute after:top-6 after:left-6 after:bottom-6 after:-translate-x-1/2 after:border after:border-slate-200"
           >
-            {DataofExperience.map((experience, index) => {
+            {experienceData.map((experience, index) => {
               return (
                 <li role="school" className="relative pl-12" key={index}>
                   <div className="flex flex-col flex-1 gap-2 text-justify">

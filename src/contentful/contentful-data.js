@@ -22,3 +22,35 @@ export const getAboutDetails = async () => {
     console.error(error);
   }
 };
+
+export const getExperienceDetails = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "experience",
+    });
+
+    const experienceData = response.items.map((item) => {
+      return item.fields;
+    });
+
+    return experienceData;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getEducationDetails = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "education",
+    });
+
+    const educationData = response.items.map((item) => {
+      return item.fields;
+    });
+
+    return educationData;
+  } catch (error) {
+    console.error(error);
+  }
+};

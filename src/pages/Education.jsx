@@ -1,6 +1,22 @@
-import { DataofEducation } from "../constants/data";
+import { useState, useEffect } from "react";
+
+import { getEducationDetails } from "../contentful/contentful-data";
 
 function Education() {
+  const [educationData, setEducationData] = useState([]);
+
+  const education = getEducationDetails();
+
+  useEffect(() => {
+    if (educationData && educationData.length === 0) {
+      education.then((data) => {
+        setEducationData(data);
+      });
+    }
+  }, [educationData, education]);
+
+  console.log(educationData, "educationData");
+
   return (
     <>
       {/*<!-- Component: Education --> */}
@@ -14,7 +30,7 @@ function Education() {
             role="list"
             className="relative flex flex-col gap-12 py-12 pl-6 before:absolute before:top-0 before:left-6 before:h-full before:-translate-x-1/2 before:border before:border-dashed before:border-slate-200 after:absolute after:top-6 after:left-6 after:bottom-6 after:-translate-x-1/2 after:border after:border-slate-200"
           >
-            {DataofEducation.map((education) => {
+            {educationData.map((education) => {
               return (
                 <li role="school" className="relative pl-12" key={education.id}>
                   <div className="flex flex-col flex-1 gap-2 text-justify">
