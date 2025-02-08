@@ -31,7 +31,7 @@ function LaptopVideo() {
         <p className="text-xs sm:text-sm md:text-base lg:text-lg font-[anzo3]">
           Want to chat? Just shoot me a DM with a direct question on my socials.
         </p>
-        <div className="flex flex-row items-center mt-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           <a
             target="_blank"
             className="bg-black px-4 py-2 text-white rounded-lg flex items-center cursor-pointer"
@@ -48,6 +48,13 @@ function LaptopVideo() {
             Send Message <i className="ri-mail-send-fill text-xl ml-2"></i>
           </a>
         </div>
+        <a
+          className="libutton"
+          href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=kapildadhich075"
+          target="_blank"
+        >
+          Follow on LinkedIn
+        </a>
 
         <Modal isOpen={isModalOpen} onClose={handleModal}>
           <Contact />
