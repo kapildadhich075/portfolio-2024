@@ -1,19 +1,15 @@
 import "remixicon/fonts/remixicon.css";
 
 import { useState, useEffect } from "react";
-import { Link, Element } from "react-scroll";
-import Header from "./components/Header";
-import About from "./pages/About";
-import Experience from "./pages/Experience";
-import Hero from "./pages/Hero";
-import HomePageText from "./pages/HomePageText";
-import LaptopVideo from "./pages/LaptopVideo";
-import Education from "./pages/Education";
-import Skills from "./pages/Skills";
-import Projects from "./pages/Projects";
+import { Link } from "react-scroll";
+
+import { ArrowUp, Code, Video } from "lucide-react";
+import MainDev from "./pages/Developer/Main-Dev";
+import MainCreator from "./pages/Creator/MainCreator";
 
 function App() {
   const [isAtHero, setIsAtHero] = useState(true);
+  const [display, setDisplay] = useState("developer");
 
   const handleScroll = () => {
     const heroElement = document.getElementById("hero");
@@ -32,29 +28,67 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Element name="hero" id="hero">
-        <Hero />
-      </Element>
-      <HomePageText />
-      <About />
-      <Experience />
-      <Education />
-      <Skills />
-      <Projects />
-      <LaptopVideo />
-      {!isAtHero && (
-        <Link
-          to="hero"
-          smooth={true}
-          duration={500}
-          className="fixed bottom-4 right-4 bg-black text-white p-2 rounded-full cursor-pointer"
-        >
-          <i className="ri-arrow-up-line p-1"></i>
-        </Link>
+      {/* Switch button with responsive positioning */}
+      <Switcher display={display} setDisplay={setDisplay} />
+
+      {/* Render the Developer or Creator mode */}
+
+      {display === "developer" ? (
+        <>
+          <MainDev />
+          {!isAtHero && <ScrollToTop />}
+        </>
+      ) : (
+        <>
+          <MainCreator />
+        </>
       )}
     </>
   );
 }
 
 export default App;
+
+function Switcher({ display, setDisplay }) {
+  return (
+    <>
+      <div className="fixed z-50 md:top-12 md:right-1/2 md:transform md:translate-x-1/2 bottom-6 left-6 md:left-auto">
+        <div className="bg-gray-200 rounded-xl p-1 inline-flex">
+          <button
+            onClick={() => setDisplay("developer")}
+            className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+              display === "developer"
+                ? "bg-black text-white"
+                : "hover:bg-gray-300"
+            }`}
+          >
+            <Code className="w-4 h-4" />
+          </button>
+          <button
+            onClick={() => setDisplay("creator")}
+            className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+              display === "creator"
+                ? "bg-black text-white"
+                : "hover:bg-gray-300"
+            }`}
+          >
+            <Video className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ScrollToTop() {
+  return (
+    <Link
+      to="hero"
+      smooth={true}
+      duration={500}
+      className="fixed bottom-6 right-6 bg-black hover:bg-gray-800 text-white p-3 rounded-full cursor-pointer shadow-lg transition-all duration-300"
+    >
+      <ArrowUp className="w-6 h-6" />
+    </Link>
+  );
+}
