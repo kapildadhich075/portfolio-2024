@@ -49,9 +49,9 @@ function Hero() {
         <h1 className="text-4xl sm:text-[5rem] font-serif text-white">KD</h1>
         <TiltText
           ref={tiltRef}
-          title="FRONTEND"
-          subtitle="DEVELOPER"
-          line="TO HIRE"
+          title="Frontend"
+          subtitle="Developer"
+          line="& DevRel Enthusiast"
         />
         <HeroBottom />
       </div>

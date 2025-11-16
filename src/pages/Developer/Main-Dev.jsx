@@ -10,6 +10,9 @@ import Projects from "./Projects";
 import LaptopVideo from "./LaptopVideo";
 
 import { Element } from "react-scroll";
+import MediumArticles from "./Blogs";
+import { FacebookEmbed, InstagramEmbed } from "react-social-media-embed";
+import SocialFeed from "./SocialMedia";
 
 function MainDev() {
   return (
@@ -20,10 +23,12 @@ function MainDev() {
       </Element>
       <HomePageText />
       <About />
+<SocialFeed/>
       <Experience />
       <Education />
       <Skills />
       <Projects />
+      <MediumArticles/>
       <LaptopVideo />
     </>
   );

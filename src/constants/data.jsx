@@ -30,6 +30,9 @@ export const Skill = [
     name: "React Native",
   },
   {
+    name: 'Expo',
+  },
+  {
     name: "Flutter",
   },
   {
@@ -80,4 +83,7 @@ export const Skill = [
   {
     name: "Three.js",
   },
+  {
+    name: "TypeScript",
+  }
 ];

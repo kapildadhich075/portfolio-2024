@@ -5,7 +5,7 @@ function HeroBottom() {
     <div className="absolute left-0 p-8 sm:p-12 lg:p-36 flex flex-col sm:flex-row items-end justify-between bottom-0 w-full text-white">
       <div className="bg-black/70 py-2 px-4 rounded-xl mb-4 sm:mb-0">
         <h2 className="text-lg sm:text-xl lg:text-2xl font-[anzo3]">
-          WEB DEVELOPMENT | CONTENT CREATION
+          Developer Relations • Frontend • Content Creator
         </h2>
         <h3 className="text-lg sm:text-xl lg:text-2xl font-[anzo2]">
           BESPOKE FREELANCE
