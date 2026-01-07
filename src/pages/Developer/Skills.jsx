@@ -5,7 +5,7 @@ function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
 
   return (
-    <div className="min-h-screen bg-white p-8">
+    <div className="min-h-[60vh] bg-white p-2">
       <div className="max-w-5xl mx-auto">
         <div className="mb-16 text-center">
           <h1 className="text-7xl md:text-9xl font-bold text-black mb-4 tracking-tight">
@@ -25,7 +25,7 @@ function Skills() {
                 animation: `fadeIn 0.5s ease-out ${index * 0.05}s both`
               }}
             >
-              <div className="relative overflow-hidden rounded-2xl bg-white border-2 border-gray-200 p-6 transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-black cursor-pointer">
+              <div className="relative overflow-hidden rounded-2xl bg-white border-2 border-gray-200 p-4 transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:border-black cursor-pointer">
                 {/* Animated background effect */}
                 <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-5 transition-all duration-300" />
                 
