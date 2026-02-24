@@ -9,6 +9,7 @@ import { ArrowUp, Code, Video } from "lucide-react";
 import MainDev from "./pages/Developer/Main-Dev";
 import MainCreator from "./pages/Creator/MainCreator";
 import ModeModal from "./components/ModeModal";
+import SetMyFielding from "./pages/Fielding/SetMyFielding";
 
 function AppContent() {
   const [isAtHero, setIsAtHero] = useState(true);
@@ -18,6 +19,7 @@ function AppContent() {
 
   // Determine current display based on path
   const currentDisplay = location.pathname === "/creator" ? "creator" : "developer";
+  const isFieldingPage = location.pathname === "/fielding";
 
   useEffect(() => {
     const savedMode = localStorage.getItem("userMode");
@@ -62,7 +64,7 @@ function AppContent() {
 
       {showModal && <ModeModal onSelect={handleModeSelection} />}
       
-      {!showModal && <Switcher display={currentDisplay} />}
+      {!showModal && !isFieldingPage && <Switcher display={currentDisplay} />}
 
       <Routes>
         <Route path="/dev" element={
@@ -84,6 +86,8 @@ function AppContent() {
             <MainCreator />
           </>
         } />
+        {/* Set My Fielding — standalone micro page for Instagram visitors */}
+        <Route path="/fielding" element={<SetMyFielding />} />
         {/* Redirect unknown routes / root will be handled by useEffect redirector */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
