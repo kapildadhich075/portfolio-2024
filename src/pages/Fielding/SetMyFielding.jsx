@@ -6,12 +6,14 @@
  * user taps "Set My Fielding Again", with a smooth fade transition.
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { messages, getRandomMessage } from "./messages";
 import { shareCard } from "./generateCard";
 import "./SetMyFielding.css";
+
+const FIREBASE_URL = "https://react-http-98d20-default-rtdb.firebaseio.com/fielding-leads.json";
 
 /* Duration (ms) must match the CSS transition time */
 const FADE_DURATION = 450;
@@ -21,6 +23,29 @@ export default function SetMyFielding() {
   const [index, setIndex] = useState(() => getRandomMessage(-1));
   const [fading, setFading] = useState(false);
   const [sharing, setSharing] = useState(false);
+
+  // User details & Modal state
+  const [userInfo, setUserInfo] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    instagramHandle: "",
+    professionalRole: "",
+    currentFocus: "",
+    signatureShot: "",
+    location: ""
+  });
+  const [submitting, setSubmitting] = useState(false);
+
+  // Check localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("fielding_user");
+    if (saved) {
+      setUserInfo(JSON.parse(saved));
+    } else {
+      setShowModal(true);
+    }
+  }, []);
 
   /* ---------- swap message with fade ---------- */
   const handleNext = useCallback(() => {
@@ -37,13 +62,51 @@ export default function SetMyFielding() {
   /* ---------- share as image card ---------- */
   const handleShare = useCallback(async () => {
     if (sharing) return;
+    
+    // If somehow sharing without info, ask again
+    if (!userInfo) {
+      setShowModal(true);
+      return;
+    }
+
     setSharing(true);
     try {
-      await shareCard(messages[index].quote, messages[index].action);
+      await shareCard(messages[index].quote, messages[index].action, userInfo);
     } finally {
       setSharing(false);
     }
-  }, [sharing, index]);
+  }, [sharing, index, userInfo]);
+
+  /* ---------- form submission ---------- */
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.fullName.trim()) return;
+
+    setSubmitting(true);
+    try {
+      // POST to Firebase
+      await fetch(FIREBASE_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      // Save locally
+      localStorage.setItem("fielding_user", JSON.stringify(formData));
+      setUserInfo(formData);
+      setShowModal(false);
+    } catch (err) {
+      console.error("Firebase error:", err);
+      // Still allow them to proceed if social sharing is important
+      setUserInfo(formData);
+      setShowModal(false);
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const { quote, action } = messages[index];
 
@@ -69,6 +132,12 @@ export default function SetMyFielding() {
         <section
           className={`fielding-card fielding-content ${fading ? "fade-out" : ""}`}
         >
+          {/* Personalized Badge */}
+          {userInfo && userInfo.fullName && (
+            <div className="fielding-user-badge">
+              Fielding for {userInfo.fullName}
+            </div>
+          )}
           {/* Quote */}
           <blockquote className="fielding-quote">"{quote}"</blockquote>
 
@@ -110,6 +179,103 @@ export default function SetMyFielding() {
             <span className="fielding-badge-name">@KAPIL.DADHICH</span>
           </Link>
         </footer>
+
+        {/* Lead Form Modal */}
+        {showModal && (
+          <div className="fielding-modal-overlay">
+            <div className="fielding-modal">
+              <h2>Welcome to the Crease</h2>
+              <p>Personalize your experience and get wisdom cards direct to your field.</p>
+
+              <form onSubmit={handleFormSubmit}>
+                <div className="fielding-input-grid">
+                  <div className="fielding-input-group">
+                    <label htmlFor="fullName">Full Name</label>
+                    <input
+                      id="fullName"
+                      type="text"
+                      className="fielding-input"
+                      placeholder="e.g. Kapil Dadhich"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div className="fielding-input-group">
+                    <label htmlFor="instagram">Instagram Handle</label>
+                    <input
+                      id="instagram"
+                      type="text"
+                      className="fielding-input"
+                      placeholder="e.g. @kapil.dadhich"
+                      value={formData.instagramHandle}
+                      onChange={(e) => setFormData({ ...formData, instagramHandle: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="fielding-input-grid">
+                  <div className="fielding-input-group">
+                    <label htmlFor="role">Professional Role</label>
+                    <input
+                      id="role"
+                      type="text"
+                      className="fielding-input"
+                      placeholder="e.g. Creator / Dev"
+                      value={formData.professionalRole}
+                      onChange={(e) => setFormData({ ...formData, professionalRole: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="fielding-input-group">
+                    <label htmlFor="location">Location</label>
+                    <input
+                      id="location"
+                      type="text"
+                      className="fielding-input"
+                      placeholder="e.g. Mumbai, India"
+                      value={formData.location}
+                      onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="fielding-input-group">
+                  <label htmlFor="focus">Current Focus</label>
+                  <input
+                    id="focus"
+                    type="text"
+                    className="fielding-input"
+                    placeholder="What are you currently setting your field for?"
+                    value={formData.currentFocus}
+                    onChange={(e) => setFormData({ ...formData, currentFocus: e.target.value })}
+                  />
+                </div>
+
+                <div className="fielding-input-group">
+                  <label htmlFor="shot">Your Signature Shot</label>
+                  <input
+                    id="shot"
+                    type="text"
+                    className="fielding-input"
+                    placeholder="One rule you live by"
+                    value={formData.signatureShot}
+                    onChange={(e) => setFormData({ ...formData, signatureShot: e.target.value })}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="fielding-modal-btn"
+                  disabled={submitting}
+                >
+                  {submitting ? "Setting Field..." : "Enter the Game"}
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </main>
     </>
   );

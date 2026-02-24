@@ -131,21 +131,54 @@ export async function generateCardBlob(quote, action) {
     y += 42;
   }
 
-  /* -- branding footer -- */
-  ctx.strokeStyle = ACCENT;
-  ctx.lineWidth = 2;
+  /* -- brand & user identity -- */
   ctx.beginPath();
-  ctx.moveTo(PADDING, CARD_H - 120);
-  ctx.lineTo(CARD_W - PADDING, CARD_H - 120);
+  ctx.strokeStyle = "rgba(0,0,0,0.08)";
+  ctx.lineWidth = 1;
+  ctx.moveTo(PADDING, CARD_H - 180);
+  ctx.lineTo(CARD_W - PADDING, CARD_H - 180);
   ctx.stroke();
 
-  ctx.font = '500 24px "Outfit", sans-serif';
+  // Branding (Left)
+  ctx.textAlign = "left";
+  ctx.font = '700 22px "Outfit", sans-serif';
+  ctx.fillStyle = TEXT_MID;
+  ctx.fillText("SET MY FIELDING", PADDING, CARD_H - 135);
+  
+  ctx.font = '400 18px "Outfit", sans-serif';
   ctx.fillStyle = TEXT_LIGHT;
-  ctx.textAlign = "center";
-  ctx.fillText("Set My Fielding", CARD_W / 2, CARD_H - 78);
+  ctx.fillText("by kapil.dadhich", PADDING, CARD_H - 105);
 
-  ctx.font = '400 20px "Outfit", sans-serif';
-  ctx.fillText("crafted by kapil", CARD_W / 2, CARD_H - 48);
+  // User Identity (Right)
+  if (userInfo && userInfo.fullName) {
+    ctx.textAlign = "right";
+    
+    // Name
+    ctx.font = '700 24px "Outfit", sans-serif';
+    ctx.fillStyle = "#1a1a1a";
+    ctx.fillText(userInfo.fullName.toUpperCase(), CARD_W - PADDING, CARD_H - 135);
+
+    // Metadata line: Role | Location
+    const meta = [userInfo.professionalRole, userInfo.location].filter(Boolean).join(" | ");
+    ctx.font = '500 18px "Outfit", sans-serif';
+    ctx.fillStyle = TEXT_MID;
+    ctx.fillText(meta, CARD_W - PADDING, CARD_H - 105);
+
+    // Handle
+    if (userInfo.instagramHandle) {
+      ctx.font = '400 16px "Outfit", sans-serif';
+      ctx.fillStyle = TEXT_LIGHT;
+      ctx.fillText(`@${userInfo.instagramHandle.replace("@", "")}`, CARD_W - PADDING, CARD_H - 75);
+    }
+  }
+
+  // Signature Shot (Bottom Center)
+  if (userInfo && userInfo.signatureShot) {
+    ctx.textAlign = "center";
+    ctx.font = 'italic 500 20px "Dancing Script", cursive';
+    ctx.fillStyle = ACCENT;
+    ctx.fillText(`"Fielding Rule: ${userInfo.signatureShot}"`, CARD_W / 2, CARD_H - 40);
+  }
 
   /* -- convert to blob -- */
   return new Promise((resolve) => {
@@ -159,9 +192,10 @@ export async function generateCardBlob(quote, action) {
  *
  * @param {string} quote  - The motivational quote
  * @param {string} action - The micro-action line
+ * @param {object} userInfo - User name and handle
  */
-export async function shareCard(quote, action) {
-  const blob = await generateCardBlob(quote, action);
+export async function shareCard(quote, action, userInfo) {
+  const blob = await generateCardBlob(quote, action, userInfo);
   const file = new File([blob], "set-my-fielding.png", { type: "image/png" });
 
   // Try native share (mostly mobile)

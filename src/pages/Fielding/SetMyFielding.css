@@ -7,13 +7,17 @@
 
 /* ---------- Page wrapper ---------- */
 .fielding-page {
-    min-height: 100dvh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 2rem 1.5rem;
+    justify-content: flex-start;
+    /* Changed from center to allow scroll start */
+    padding: 4rem 1.5rem 8rem;
+    /* Added bottom padding for footer clearance */
     text-align: center;
+    overflow-y: auto;
+    position: relative;
 
     /* Warm off-white with a soft vertical gradient */
     background: linear-gradient(168deg,
@@ -53,6 +57,47 @@
     max-width: 560px;
     width: 100%;
     position: relative;
+    padding: 4.5rem 2.5rem 3rem;
+    /* Increased top padding for badge gap */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 242, 235, 0.8));
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        10px 10px 20px rgba(0, 0, 0, 0.05),
+        -5px -5px 15px rgba(255, 255, 255, 0.8),
+        inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+        inset -2px -2px 5px rgba(0, 0, 0, 0.02);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+}
+
+.fielding-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow:
+        15px 15px 30px rgba(0, 0, 0, 0.08),
+        -8px -8px 20px rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- User Badge ---------- */
+.fielding-user-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    /* Made it light */
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    white-space: nowrap;
 }
 
 /* ---------- Quote ---------- */
@@ -69,6 +114,7 @@
     color: #1a1a1a;
     quotes: none;
     font-style: normal;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
 }
 
 /* ---------- Action line ---------- */
@@ -76,10 +122,15 @@
     font-family: 'Outfit', sans-serif;
     font-size: 0.95rem;
     font-weight: 300;
-    color: #6b6b6b;
+    color: #4a4a4a;
     letter-spacing: 0.05em;
     margin-bottom: 2.5rem;
     line-height: 1.6;
+    padding: 0.8rem 1.2rem;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 100px;
+    display: inline-block;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .fielding-action-icon {
@@ -147,6 +198,7 @@
     gap: 0.75rem;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 3rem;
 }
 
 /* ---------- Share button variant ---------- */
@@ -186,15 +238,15 @@
 
 /* ---------- Premium Footer Badge ---------- */
 .fielding-footer {
-    position: fixed;
-    bottom: 2rem;
-    left: 0;
-    right: 0;
+    position: relative;
+    margin-top: 6rem;
+    /* Substantial gap between buttons and footer */
+    padding-bottom: 2rem;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 50;
-    pointer-events: none;
 }
 
 .fielding-badge {
@@ -298,4 +350,135 @@
     .fielding-quote {
         font-size: 1.75rem;
     }
+}
+
+/* ---------- Modal Overlay ---------- */
+.fielding-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(43, 43, 43, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+}
+
+.fielding-modal {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 24px;
+    padding: 2.25rem;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transform: translateY(0);
+    animation: modalSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fielding-input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 480px) {
+    .fielding-input-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+@keyframes modalSlide {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fielding-modal h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.fielding-modal p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.fielding-input-group {
+    margin-bottom: 1.25rem;
+}
+
+.fielding-input-group label {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+    color: #888;
+}
+
+.fielding-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    color: #1a1a1a;
+    transition: all 0.3s ease;
+}
+
+.fielding-input:focus {
+    outline: none;
+    border-color: #1a1a1a;
+    background: white;
+}
+
+.fielding-modal-btn {
+    width: 100%;
+    padding: 1rem;
+    background: #1a1a1a;
+    color: white;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+}
+
+.fielding-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.fielding-modal-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
 }
