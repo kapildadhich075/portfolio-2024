@@ -58,7 +58,7 @@ function wrapText(ctx, text, maxWidth) {
  * @param {string} action - The micro-action line
  * @returns {Promise<Blob>} PNG blob of the card
  */
-export async function generateCardBlob(quote, action) {
+export async function generateCardBlob(quote, action, userInfo) {
   const canvas = document.createElement("canvas");
   canvas.width = CARD_W;
   canvas.height = CARD_H;

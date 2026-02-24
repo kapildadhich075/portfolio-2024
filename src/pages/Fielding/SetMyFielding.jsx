@@ -203,7 +203,7 @@ export default function SetMyFielding() {
                   </div>
 
                   <div className="fielding-input-group">
-                    <label htmlFor="instagram">Instagram Handle</label>
+                    <label htmlFor="instagram">Instagram (Optional)</label>
                     <input
                       id="instagram"
                       type="text"
@@ -217,7 +217,7 @@ export default function SetMyFielding() {
 
                 <div className="fielding-input-grid">
                   <div className="fielding-input-group">
-                    <label htmlFor="role">Professional Role</label>
+                    <label htmlFor="role">Role (Optional)</label>
                     <input
                       id="role"
                       type="text"
@@ -229,7 +229,7 @@ export default function SetMyFielding() {
                   </div>
 
                   <div className="fielding-input-group">
-                    <label htmlFor="location">Location</label>
+                    <label htmlFor="location">Location (Optional)</label>
                     <input
                       id="location"
                       type="text"
@@ -242,19 +242,19 @@ export default function SetMyFielding() {
                 </div>
 
                 <div className="fielding-input-group">
-                  <label htmlFor="focus">Current Focus</label>
+                  <label htmlFor="focus">Focus (Optional)</label>
                   <input
                     id="focus"
                     type="text"
                     className="fielding-input"
-                    placeholder="What are you currently setting your field for?"
+                    placeholder="Setting your field for?"
                     value={formData.currentFocus}
                     onChange={(e) => setFormData({ ...formData, currentFocus: e.target.value })}
                   />
                 </div>
 
                 <div className="fielding-input-group">
-                  <label htmlFor="shot">Your Signature Shot</label>
+                  <label htmlFor="shot">Signature Rule (Optional)</label>
                   <input
                     id="shot"
                     type="text"
