@@ -1,10 +1,10 @@
 import React from "react";
 
 const btsMoments = [
-  { id: 1, image: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2070&auto=format&fit=crop", title: "The Prep" },
-  { id: 2, image: "https://images.unsplash.com/photo-1533441818224-ec5c0d65b796?q=80&w=2070&auto=format&fit=crop", title: "Golden Hour" },
-  { id: 3, image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?q=80&w=2070&auto=format&fit=crop", title: "Late Edits" },
-  { id: 4, image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2070&auto=format&fit=crop", title: "The Gear" },
+  { id: 1, image: "https://ik.imagekit.io/umdiwr6ma/portfolio/photo/IMG_4451-1.JPG", title: "Laal Maas - Spicy Rajasthani Lamb Curry" },
+  { id: 2, image: "https://ik.imagekit.io/umdiwr6ma/portfolio/photo/IMG_4498-1-2.JPG", title: "Vegetable & Paneer Lasagna" },
+  { id: 3, image: "https://ik.imagekit.io/umdiwr6ma/portfolio/photo/IMG_3195.jpg", title: "Heritage Reimagined: The Nivea Blue Tin" },
+  { id: 4, image: "https://ik.imagekit.io/umdiwr6ma/portfolio/photo/7f6549552b12172dfaa5abd442a557c2.jpg", title: "The Silhouette of Speed" },
 ];
 
 function BTSSection() {
