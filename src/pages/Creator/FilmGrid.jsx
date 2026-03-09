@@ -24,8 +24,8 @@ const films = [
     id: 3,
     title: "Visual Journal",
     category: "Behind The Lens",
-    image: "/instagram-preview.jpg", // <-- your image here
-    caption: "Beyond the edits and frames — a space where everyday moments turn into visual stories.",
+    image: "https://ik.imagekit.io/umdiwr6ma/portfolio/photo/IMG_6903.HEIC", // <-- your image here
+    caption: "Beyond the edits and frames, a space where everyday moments turn into visual stories.",
     link: "https://instagram.com/075kapildadhich",
     theme: "Creator"
   }
