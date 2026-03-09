@@ -21,11 +21,11 @@ function MainCreator() {
       <CreatorHero />
       
       <div className="relative z-10 w-full overflow-hidden">
+        <YoutubeGrid />
         <FilmGrid />
         <AboutCreator />
         <BTSSection />
         <CreatorCTA />
-        <YoutubeGrid />
       </div>
 
       {/* Retro Date/Time Overlay (Casey Neistat style) */}
