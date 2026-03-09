@@ -20,15 +20,15 @@ const films = [
     link: "https://www.instagram.com/reel/C_aGNS6SePa/",
     theme: "Emotion"
   },
-  {
-    id: 3,
-    title: "The Grind",
-    category: "Hustle",
-    video: "/herovideo.mov", // Placeholder for another video if available
-    caption: "The unseen effort behind the cinematic shots.",
-    link: "https://instagram.com/075kapildadhich",
-    theme: "Hustle"
-  }
+{
+  id: 3,
+  title: "The Grind",
+  category: "Portfolio",
+  video: "/herovideo.mov",
+  caption: "My creative playground — documenting the journey of filmmaking, storytelling, and visual experiments.",
+  link: "https://instagram.com/075kapildadhich",
+  theme: "Portfolio"
+}
 ];
 
 function FilmGrid() {
