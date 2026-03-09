@@ -4,6 +4,7 @@ import FilmGrid from "./FilmGrid";
 import AboutCreator from "./AboutCreator";
 import BTSSection from "./BTSSection";
 import CreatorCTA from "./CreatorCTA";
+import YoutubeGrid from "./YoutubeGrid";
 
 function MainCreator() {
   useEffect(() => {
@@ -24,6 +25,7 @@ function MainCreator() {
         <AboutCreator />
         <BTSSection />
         <CreatorCTA />
+        <YoutubeGrid />
       </div>
 
       {/* Retro Date/Time Overlay (Casey Neistat style) */}
