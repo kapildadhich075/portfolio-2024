@@ -3,24 +3,27 @@ import React from "react";
 const youtubeVideos = [
   {
     id: 1,
-    title: "Street Stories",
-    category: "Cinematic",
-    embed: "https://www.youtube.com/embed/05YqatMm1lw?si=53kEE1f-r4N_HPrK",
-    caption: "Learning by Watching Someone Build"
+    title: "Learning by Watching Someone Build",
+    category: "Creative Process",
+    embed: "https://www.youtube.com/embed/05YqatMm1lw",
+    caption:
+      "I walked in planning to shoot content, but stayed to witness something quieter. Someone showing up for a dream through patience, small decisions, and the kind of work most people never see."
   },
   {
     id: 2,
-    title: "Mumbai Nights",
-    category: "Visual Film",
-    embed: "https://www.youtube.com/embed/JHsmiTGEEks?si=qS0YJwzKVIWvUsjy",
-    caption: "A cinematic journey through the restless nights of a young adult"
+    title: "Turning 21 in 2024",
+    category: "Personal Essay",
+    embed: "https://www.youtube.com/embed/JHsmiTGEEks",
+    caption:
+      "Reflections on turning 21. How time suddenly moves faster, what growing up in India feels like, and the strange mix of confusion, dreams, chai, and quiet ambition."
   },
   {
     id: 3,
-    title: "Behind The Lens",
-    category: "Process",
-    embed: "https://www.youtube.com/embed/i-4LPJiZj94?si=kIE7UcUfxfeMjS5F",
-    caption: "Mumbai Cha Raja: लालबागचा राजा विसर्जन 2025 | एक शहर, एक धड़कन | Ganpati Visarjan"
+    title: "Mumbai Cha Raja Lalbaugcha Raja Visarjan",
+    category: "Cultural Film",
+    embed: "https://www.youtube.com/embed/i-4LPJiZj94",
+    caption:
+      "Ganpati Visarjan in Mumbai. The streets turn into an ocean of devotion where every heartbeat echoes with Bappa’s presence."
   }
 ];
 
